@@ -56,8 +56,112 @@
     background-repeat: no-repeat;
     background-size: cover;
     }
+
+
+    /* traversy media */
+
+    #wrapper{
+  position: relative;
+  width:100%;
+  min-height:55vw;
+  overflow: hidden;
+}
+
+.layer{
+  position: absolute;
+  width:100vw;
+  min-height: 55vw;
+  overflow: hidden;
+}
+
+.layer .content-wrap{
+  position: absolute;
+  width:100vw;
+  min-height: 55vw;
+}
+
+.layer .content-body{
+  width:25%;
+  position:absolute;
+  top:50%;
+  text-align: center;
+  transform:translateY(-50%);
+  color:#fff;
+}
+
+.layer img{
+  position: absolute;
+  width:35%;
+  top:50%;
+  left: 50%;
+  transform:translate(-50%, -50%);
+}
+
+.layer h1{
+  font-size:2em;
+}
+
+.bottom{
+  background:#222;
+  z-index:1;
+}
+
+.bottom .content-body{
+  right:5%;
+}
+
+.bottom h1{
+  color:#FDAB00;
+}
+
+.top{
+  background:#eee;
+  color:#222;
+  z-index:2;
+  width:50vw;
+}
+
+.top .content-body{
+  left: 5%;
+  color:#222;
+}
+
+.handle{
+  position: absolute;
+  height: 100%;
+  display: block;
+  background-color: #FDAB00;
+  width:5px;
+  top:0;
+  left: 50%;
+  z-index:3;
+}
+
+.skewed .handle{
+  top:50%;
+  transform:rotate(30deg) translateY(-50%);
+  height: 200%;
+  transform-origin:top;
+}
+
+.skewed .top{
+  transform: skew(-30deg);
+  margin-left:-1000px;
+  width: calc(50vw + 1000px);
+}
+
+.skewed .top .content-wrap{
+  transform: skew(30deg);
+  margin-left:1000px;
+}
+
+@media(max-width:768px){
+  body{
+    font-size:75%;
+  }
+}
 </style>
-    </style>
+
 
   </head>
 
@@ -79,9 +183,9 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#portfolio">Galaxy Series</a>
             </li>
-            <li class="nav-item">
+            <!--<li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#about">About</a>
-            </li>
+            </li>-->
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#team">Team</a>
             </li>
@@ -95,14 +199,52 @@
 
     <!-- Header -->
     <header class="masthead">
-      <div class="container">
-        <div class="intro-text">
-          <div class="intro-lead-in">Welcome To Our Studio!</div>
-          <div class="intro-heading text-uppercase">It's Nice To Meet You</div>
-          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
+     <section id="wrapper" class="skewed">
+    <div class="layer bottom">
+      <div class="content-wrap">
+        <div class="content-body">
+          <h1>Samsung Galaxy Note 9</h1>
+          
+        </div>
+        <img src="slidernote9.jpg" alt="">
+      </div>
+    </div>
+
+    <div class="layer top">
+        <div class="content-wrap">
+          <div class="content-body">
+            <h1>Samsung Galaxy S9</h1>
+           
+          </div>
+          <img src="sliders9.jpg" alt="">
         </div>
       </div>
-    </header>
+
+      <div class="handle"></div>
+       </header>
+
+      <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function(){
+  let wrapper = document.getElementById('wrapper');
+  let topLayer = wrapper.querySelector('.top');
+  let handle = wrapper.querySelector('.handle');
+  let skew = 0;
+  let delta = 0;
+
+  if(wrapper.className.indexOf('skewed') != -1){
+    skew = 1000;
+  }
+  
+  wrapper.addEventListener('mousemove', function(e){
+    delta = (e.clientX - window.innerWidth / 2) * 0.5;
+  
+    handle.style.left = e.clientX + delta + 'px';
+
+    topLayer.style.width= e.clientX + skew + delta + 'px';
+  });
+});
+      </script>
+   
 
     <!-- Services -->
     <section id="services">
@@ -359,8 +501,8 @@
           <div class="col-sm-4">
             <div class="team-member">
               <img class="mx-auto rounded-circle" src="img/team/1.jpg" alt="">
-              <h4>Kay Garland</h4>
-              <p class="text-muted">Lead Designer</p>
+              <h4>Jan Mark Ballados</h4>
+              <p class="text-muted">Assistant Developer</p>
               <ul class="list-inline social-buttons">
                 <li class="list-inline-item">
                   <a href="#">
@@ -383,8 +525,8 @@
           <div class="col-sm-4">
             <div class="team-member">
               <img class="mx-auto rounded-circle" src="img/team/2.jpg" alt="">
-              <h4>Larry Parker</h4>
-              <p class="text-muted">Lead Marketer</p>
+              <h4>Clark Jr. Canlog</h4>
+              <p class="text-muted">Lead Developer</p>
               <ul class="list-inline social-buttons">
                 <li class="list-inline-item">
                   <a href="#">
@@ -407,8 +549,8 @@
           <div class="col-sm-4">
             <div class="team-member">
               <img class="mx-auto rounded-circle" src="img/team/3.jpg" alt="">
-              <h4>Diana Pertersen</h4>
-              <p class="text-muted">Lead Developer</p>
+              <h4>Janeil Alacano</h4>
+              <p class="text-muted">Assistant Developer</p>
               <ul class="list-inline social-buttons">
                 <li class="list-inline-item">
                   <a href="#">
